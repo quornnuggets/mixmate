@@ -1,4 +1,5 @@
 import { Headphones, ArrowRight } from "lucide-react";
+import DJStudio from "./components/DJStudio";
 import "./App.css";
 
 function App() {
@@ -38,9 +39,9 @@ function App() {
             </a>
           </div>
         </section>
+        <DJStudio />
       </main>
     </div>
   );
 }
-
 export default App;

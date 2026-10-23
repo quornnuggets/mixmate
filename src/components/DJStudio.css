@@ -1,0 +1,186 @@
+
+/* ==========================================
+   mixMate — dj studio
+   ========================================== */
+
+/* main room container */
+.dj-studio {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  height: 400px;
+  margin: 20px auto 70px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    to bottom,
+    #30283f 0%,
+    #483750 70%,
+    #30263a 70%
+  );
+
+  border: 5px solid #705879;
+  box-shadow: 8px 8px 0 #0b0a12;
+}
+
+/* window + sunset */
+.studio-window {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 55%;
+  height: 180px;
+  overflow: hidden;
+
+  background: linear-gradient(#5b4b80, #df92a1);
+  border: 9px solid #211b32;
+}
+
+/* moon inside the window */
+.studio-moon {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  color: #ffe5bc;
+  font-size: 55px;
+}
+
+/* simple buildings silhouettes */
+.studio-skyline {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #30263f 0 35px,
+    #443450 35px 60px
+  );
+}
+
+/* cat beside the decks */
+.studio-cat {
+  position: absolute;
+  right: 14%;
+  bottom: 105px;
+  font-size: 65px;
+  z-index: 4;
+}
+
+/* desk with equipment */
+.studio-desk {
+  position: absolute;
+  bottom: 45px;
+  left: 15%;
+  width: 70%;
+  height: 105px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: #9b737d;
+  border: 6px solid #493442;
+  z-index: 3;
+}
+
+/* turntables */
+.studio-record {
+  display: grid;
+  place-items: center;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  background: #292638;
+  border: 6px solid #6b596f;
+  color: #f3a0b9;
+  font-size: 30px;
+}
+
+/* centre mixer */
+.studio-mixer {
+  color: #30263a;
+  font-size: 55px;
+}
+
+/* decorative stars */
+.studio-sparkle {
+  position: absolute;
+  color: #f9c9dc;
+  font-size: 25px;
+  animation: twinkle 2.5s ease-in-out infinite alternate;
+}
+
+.sparkle-one {
+  top: 60px;
+  left: 15%;
+}
+
+.sparkle-two {
+  top: 130px;
+  right: 12%;
+  animation-delay: 1s;
+}
+
+/* little label below the scene */
+.studio-caption {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #f6d5e4;
+  font-size: 16px;
+}
+
+/* star animation */
+@keyframes twinkle {
+  from {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* smaller screens */
+@media (max-width: 600px) {
+  .dj-studio {
+    height: 300px;
+  }
+
+  .studio-window {
+    width: 70%;
+    height: 140px;
+  }
+
+  .studio-desk {
+    left: 8%;
+    width: 84%;
+    height: 85px;
+  }
+
+  .studio-record {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+
+  .studio-cat {
+    font-size: 45px;
+  }
+}
+
+/* respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .studio-sparkle {
+    animation: none;
+  }
+}
