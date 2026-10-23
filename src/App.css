@@ -1,192 +1,298 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* ==========================================
+   mixMate — main stylesheet !
+   ==========================================
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+   this file controls the appearance of the
+   homepage, including colours, fonts, layout,
+   buttons and mobile responsiveness.
+*/
+
+/* ==========================================
+   1. FONTS + COLOUR PALETTE
+   ========================================== */
+
+/* this imports the pixel-art font */
+@import "@fontsource/pixelify-sans/400.css";
+@import "@fontsource/pixelify-sans/700.css";
+
+:root {
+  /* default font used throughout mixMate */
+  font-family: "Pixelify Sans", monospace;
+
+  /* reusable colours */
+  --background: #171522; /* Midnight purple */
+  --surface: #242034;    /* Lighter purple for cards */
+  --peach: #ffd0ae;      /* Logo and main headings */
+  --pink: #f3a0b9;       /* Taglines and highlights */
+  --sage: #b4c7a1;       /* Buttons */
+  --lilac: #c4a0dc;      /* Decorative text */
+  --text: #f6e9ef;       /* Main text */
+  --muted: #c5b5ca;      /* Secondary text */
 }
 
+/* ==========================================
+   2. GLOBAL STYLES
+   ========================================== */
+
+/* this makes the element widths easier to calculate */
+* {
+  box-sizing: border-box;
+}
+
+/* this allows the browser to smoothly scroll to sections when clicking links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* this removes default browser margins and sets the colours */
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--text);
+}
+
+/* main app background */
+.app {
+  min-height: 100vh;
+
+  /* adds a v pretty + subtle purple glow !! */
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      #30263f 0%,
+      transparent 45%
+    ),
+    var(--background);
+}
+
+/* ==========================================
+   3. NAVIGATION BAR
+   ========================================== */
+
+/* this is the bar containing our logo and page links */
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 35px;
+
+  /* this places the logo and links next to each other */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* mixMate logo + headphone icon */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--peach);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* container holding navigation links */
+.navbar nav {
+  display: flex;
+  gap: 30px;
+}
+
+/* individual navigation links */
+.navbar nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* changes the link colour when mouse hovers over it */
+.navbar nav a:hover {
+  color: var(--pink);
+}
+
+/* ==========================================
+   4. MAIN CONTENT
+   ========================================== */
+
+/* keeps the page content from becoming too wide */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 25px;
+}
+
+/* ==========================================
+   5. HERO SECTION
+   ==========================================
+
+   the hero is the main introduction area:
+   - "your dj sidekick"
+   - mixMate heading
+   - tagline
+   - description
+   - main button
+*/
+
+/* Ccntres everything in the hero section */
 .hero {
-  position: relative;
+  min-height: 480px;
 
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  align-items: center;
+  justify-content: center;
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
-
-.hero-content p {
-  max-width: 400px;
-  line-height: 1.6;
-  margin-left: auto;
-  margin-right: auto;
+/* centres the text inside the hero */
+.hero-content {
   text-align: center;
+}
+
+/* teeny tiny decorative text above the logo */
+.eyebrow {
+  color: var(--lilac);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+/* BIG mixMate heading */
+.hero h1 {
+  color: var(--peach);
+
+  /* responsive font size:
+     minimum 70px, maximum 120px */
+  font-size: clamp(70px, 12vw, 120px);
+
+  line-height: 1;
+  margin: 18px 0;
+}
+
+/* pink tagline under the heading */
+.hero h2 {
+  color: var(--pink);
+  font-size: clamp(23px, 4vw, 32px);
+  margin: 20px 0;
+}
+
+/* description paragraph */
+.hero-content p {
+  /* stops text from stretching across the screen */
+  max-width: 400px;
+
+  /* auto margins centre the paragraph */
+  margin: 20px auto;
+
+  /* centres the text within the paragraph */
+  text-align: center;
+
+  color: var(--muted);
+  font-size: 19px;
+
+  /* space between lines */
+  line-height: 1.6;
+}
+
+/* ==========================================
+   6. MAIN BUTTON
+   ========================================== */
+
+/* "explore mixMate" button */
+.get-started {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* space between button text and arrow */
+  gap: 12px;
+
+  margin-top: 20px;
+
+  /* space inside the button */
+  padding: 14px 24px;
+
+  background: var(--sage);
+  color: #273326;
+
+  /* chunky pixel-inspired border */
+  border: 3px solid #718467;
+
+  font-size: 19px;
+  font-weight: 700;
+  text-decoration: none;
+
+  /* offset shadow for retro game-button effect */
+  box-shadow: 5px 5px 0 #0b0a12;
+
+  /* makes hover animation smooth */
+  transition: transform 0.15s ease;
+}
+
+/* button lifts slightly when hovered */
+.get-started:hover {
+  transform: translateY(-3px);
+}
+
+/* visible outline for keyboard navigation */
+.get-started:focus-visible,
+.navbar a:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   7. FEATURES SECTION
+   ========================================== */
+
+/* the section below the homepage introduction */
+#features {
+  text-align: center;
+  padding: 50px 20px;
+
+  background: var(--surface);
+  border: 3px solid #584761;
+
+  /* chunky retro shadow */
+  box-shadow: 6px 6px 0 #0b0a12;
+}
+
+/* Features section heading */
+#features h2 {
+  color: var(--peach);
+  font-size: 30px;
+}
+
+/* ==========================================
+   8. MOBILE RESPONSIVENESS
+   ==========================================
+
+   a media query applies styles only when
+   the screen meets a certain condition.
+
+   here, these styles apply when the screen
+   is 600px wide or smaller.
+*/
+
+@media (max-width: 600px) {
+
+  /* stack the logo and navigation vertically */
+  .navbar {
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* reduce hero height on smaller screens */
+  .hero {
+    min-height: 400px;
+  }
+
+  /* reduce page padding */
+  main {
+    padding: 30px 20px;
+  }
+
+  /* slightly smaller description text */
+  .hero-content p {
+    font-size: 17px;
+  }
 }
